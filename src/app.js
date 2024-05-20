@@ -6,14 +6,13 @@ const User = require("./model/user");
 const Note = require("./model/note");
 const userRouter = require("./router/userRouter");
 const noteRouter = require("./router/notesRouter");
+const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(userRouter);
 app.use(noteRouter);
-app.use((req, res, next) => {
-	console.log("hii");
-	console.log("http request " + req.method);
-});
+app.use(cors());
+
 app.get("/", (req, res) => {
 	res.send("hello ritika");
 });
